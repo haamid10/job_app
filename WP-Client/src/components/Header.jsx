@@ -12,8 +12,8 @@ function Header() {
    {user === true ? ( 
     <div className="flex gap-5 items-center">
     <div className="mx-auto">
-        <img src={mailcamp} alt="" srcset="" className="w-16 rounded-full" />
-        <p className="font-light mt-3">Hi MailCamp</p>
+        <img src={mailcamp} alt="" srcset="" className="w-12 rounded-full" />
+        {/* <p className="font-light mt-3">Hi MailCamp</p> */}
     </div>
     <Link to="/register" className="px-10 py-2 bg-black text-white rounded-md">
         Logout

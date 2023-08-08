@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { UserContext } from "../context/userContect";
 import { useNavigate } from "react-router-dom";
 function Login() {
-    navigate = useNavigate()
+   const navigate = useNavigate();
     const {setUser}= useContext(UserContext)
     const [input, setInput] = useState({});
 
