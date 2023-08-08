@@ -1,7 +1,7 @@
 import { useState , useEffect } from "react";
 import "./App.css";
 import Home from "./Pages/Home";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import SinglePost from "./Pages/SinglePost";
 import NotFound from "./Pages/NotFound";
 import Login from "./Pages/Login";
@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UserContext } from "./context/userContect";
+import Job from "./Pages/Job";
 function App() {
   const [user , setUser] = useState(false)
   const [loading , setLoading] = useState(true)
@@ -36,6 +37,7 @@ function App() {
     <Route path="/login" element={<Login />} />
     <Route path="/register" element={<Signup />} />
     <Route path="/single" element={<SinglePost />} />
+    <Route path="/post" element={ user === true ?  <Job/> : <Navigate to="/login"/> } />
     <Route path="*" element={<NotFound />} />
    </Routes>
    <Footer />

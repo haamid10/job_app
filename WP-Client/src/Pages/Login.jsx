@@ -4,7 +4,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify"; 
 import { UserContext } from "../context/userContect";
+import { useNavigate } from "react-router-dom";
 function Login() {
+    navigate = useNavigate()
     const {setUser}= useContext(UserContext)
     const [input, setInput] = useState({});
 
@@ -17,6 +19,7 @@ function Login() {
                 setInput({email: "",password: ""})
                 localStorage.setItem("token", res.data.token)
                 setUser(true)
+                navigate("/");
             })
         }
         catch (error) {
@@ -35,7 +38,7 @@ function Login() {
     <form className="bg-white rounded-lg shadow-lg w-[35rem] mx-auto p-10 mb-10">
      <h1 className="font-bold text-2xl mb-2">Login User</h1>
      <p className="font-light text-xs">
-      The following is required and will be shared with opeepi
+      The following is required and will be shared with open api
      </p>
 
      <div>
