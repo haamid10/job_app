@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../context/userContect";
 import mailcamp from "../assets/mailchimp.jpeg";
 function Header() {
-    const { user } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        setUser(false);
+    }
  return (
   <div className="flex justify-between items-center mx-32 my-5">
    <div className="logo">
@@ -15,7 +20,7 @@ function Header() {
         <img src={mailcamp} alt="" srcset="" className="w-12 rounded-full" />
         {/* <p className="font-light mt-3">Hi MailCamp</p> */}
     </div>
-    <Link to="/register" className="px-10 py-2 bg-black text-white rounded-md">
+    <Link to="/" onClick={handleLogout}  className="px-10 py-2 bg-black text-white rounded-md">
         Logout
     </Link>
     </div> 
