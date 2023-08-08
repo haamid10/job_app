@@ -13,12 +13,18 @@ import "react-toastify/dist/ReactToastify.css";
 import { UserContext } from "./context/userContect";
 function App() {
   const [user , setUser] = useState(false)
+  const [loading , setLoading] = useState(true)
   useEffect(()=>{
     const token = localStorage.getItem("token");
     if(token !== null) {
       setUser(true)
     }
+    setLoading(false)
   })
+
+  if(loading) { 
+    return  <div> loading.....</div>;
+  }
  return (
  <div>
   <UserContext.Provider  value={{user ,setUser}}>

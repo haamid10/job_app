@@ -1,20 +1,22 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify"; 
-
+import { UserContext } from "../context/userContect";
 function Login() {
-    const [user, setUser] = useState({});
+    const {setUser}= useContext(UserContext)
+    const [input, setInput] = useState({});
 
     const handleChange = (e) => {
         try {
             e.preventDefault();
-            axios.post("http://localhost:8000/user/login", user)
+            axios.post("http://localhost:8000/user/login", input)
             .then((res)=>{
                 toast.success(res.data.message);
-                setUser({email: "",password: ""})
+                setInput({email: "",password: ""})
                 localStorage.setItem("token", res.data.token)
+                setUser(true)
             })
         }
         catch (error) {
@@ -23,7 +25,8 @@ function Login() {
         }
         // console.log(user)
     }
- return (
+ return ( 
+    
   <div>
    <div className="bg-primary p-10">
     <Link to="/" className="font-bold my-8 mx-80">
@@ -43,7 +46,7 @@ function Login() {
        id=""
        placeholder="Email address"
        className="w-full p-1.5 rounded-md bg-[#f6f6f6]"
-       onChange={(e)=>{setUser({...user,email:e.target.value})}}
+       onChange={(e)=>{setInput({...input,email:e.target.value})}}
       />
      </div>
 
@@ -55,7 +58,7 @@ function Login() {
        name=""
        id=""
        placeholder="Enter your password"
-       onChange={(e)=>{setUser({...user,password:e.target.value})}}
+       onChange={(e)=>{setInput({...input,password:e.target.value})}}
       />
      </div>
 
