@@ -20,6 +20,10 @@ const userSchema = mongoose.Schema({
  company: {
     type: String,
     required: true
+ },
+ image: {
+   type: String,
+   required: true
  }
 });
 

@@ -6,7 +6,7 @@ exports.signup = async (req, res) => {
   const findUser = await users.findOne({ email: req.body.email });
   // if user is exist
   if (findUser) {
-   return res.status(400).json({ message: "Email is alerady exisits" });
+   return res.status(400).json({ message: "Email is already exists" });
   }
   // password must confirm
   if (req.body.password !== req.body.confirmPassword) {
@@ -16,7 +16,10 @@ exports.signup = async (req, res) => {
   const hashedPassword = await bcrypt.hash(req.body.password, 10);
   req.body.password = hashedPassword;
 
-  //save
+  req.body.image = req.file.filename;
+
+  console.log(req.body)
+     //save
   await users.create(req.body);
   res.status(200).json({ message: "User is created" });
  } catch (error) {
