@@ -18,7 +18,7 @@ exports.signup = async (req, res) => {
 
   req.body.image = req.file.filename;
 
-  console.log(req.body)
+  // console.log(req.body)
      //save
   await users.create(req.body);
   res.status(200).json({ message: "User is created" });

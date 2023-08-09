@@ -15,15 +15,15 @@ const userSchema = mongoose.Schema({
  },
  bio: {
     type: String,
-    required: true
+    required: true,
  },
  company: {
     type: String,
-    required: true
+    required: true,
  },
  image: {
    type: String,
-   required: true
+   required: true,
  }
 });
 
