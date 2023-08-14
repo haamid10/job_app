@@ -15,6 +15,6 @@ app.use(express.static("images"))
 app.use("/user", userRoute);
 app.use("/post", postRoute);
 
-app.listen(8000, () => {
+app.listen(8080, () => {
  console.log("connected server port of 8000");
 });

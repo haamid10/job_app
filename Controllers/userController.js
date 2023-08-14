@@ -18,7 +18,7 @@ exports.signup = async (req, res) => {
 
   req.body.image = req.file.filename;
 
-  // console.log(req.body)
+  console.log(req.body)
      //save
   await users.create(req.body);
   res.status(200).json({ message: "User is created" });
@@ -45,12 +45,24 @@ const token = jwt.sign({
     id: findUser._id,
     email: findUser.email, 
 },  process.env.JWTSECRET, {expiresIn: "2 days"})
-
-
-console.log()
-  // Login successfuly
   res.status(200).json({ message: "Successfully Login" , token });
  } catch (error) {
   res.status(400).json({ error });
  }
 };
+
+exports.getOne = async (req, res) => { 
+try {
+  const {id} = req.params;
+  const findUser= await users.findById(id);
+  const userProfileFile = {
+    id: findUser.id,
+    email: findUser.email,
+    image: findUser.image
+  }
+  res.status(200).json({ message: userProfileFile})
+} catch (error) {
+  res.status(400).json(error)
+}
+ 
+}
