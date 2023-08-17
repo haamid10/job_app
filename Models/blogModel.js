@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
-const postSchema = mongoose.Schema({
- jobTitle: {
+const blogSchema = mongoose.Schema({
+ Titlbloge: {
   type: String,
   required: true,
  },
- jobDesc: {
+ blogDesc: {
   type: String,
   required: true,
  },

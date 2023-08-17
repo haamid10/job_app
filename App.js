@@ -7,6 +7,8 @@ const postRoute = require("./Routes/postRoute");
 const cors =require("cors")
 dotenv.config({ path: "./.env" });
 
+require("./Models/postModel")
+require("./Models/userModel")
 require("./Connection");
 
 app.use(cors());
